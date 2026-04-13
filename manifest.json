@@ -1,0 +1,38 @@
+{
+    "name": "YouTubeNoSub",
+    "version": "2.6.0",
+    "description": "Accès au vidéo YouTube réserver au membre gratuitement en téléchargeant gratuitement et accéder sans pub",
+    "manifest_version": 3,
+    "icons": {
+        "128": "assets/icons/icon.png"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "src/app.js",
+                "src/chrome/app.js"
+            ],
+            "matches": [
+                "https://*.youtube.com/*"
+            ]
+        }
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.youtube.com/*"
+            ],
+            "js": [
+                "src/restriction-remover.js",
+                "src/twitchnosub.js"
+            ],
+            "all_frames": true,
+            "run_at": "document_start"
+        }
+    ],
+    "host_permissions": [
+        "https://*.*youtube.com/*",
+        "https://static.youtubecdn.net/assets/*"
+    ],
+    "permissions": []
+}
